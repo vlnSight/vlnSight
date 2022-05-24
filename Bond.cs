@@ -6,6 +6,7 @@ public class Bond : MonoBehaviour
 {
     public GameObject playerA;
     public GameObject playerB;
+    public Vector3 distance;
     private Rigidbody pARB;
     private Rigidbody pBRB;
     public float maxDist = 12.0f;
@@ -44,11 +45,10 @@ public class Bond : MonoBehaviour
             tendu = true;
             float ropeForce;
 
-            Vector3 distance = playerA.transform.position - playerB.transform.position;
             if (pBRB.velocity.magnitude > forceMax)
             {
                 ropeForce = forceMax;
-                UnityEngine.Debug.Log("Lien brisé!");
+                UnityEngine.Debug.Log("Lien brisÃ©!");
             }
             else
             {
@@ -59,7 +59,7 @@ public class Bond : MonoBehaviour
             pBRB.AddForce(force2Add, ForceMode.Impulse);
             pARB.AddForce(-force2Add, ForceMode.Impulse);
 
-            UnityEngine.Debug.Log("Force appliquée : " + force2Add.magnitude);
+            UnityEngine.Debug.Log("Force appliquÃ©e : " + force2Add.magnitude);
         }
     }
 
