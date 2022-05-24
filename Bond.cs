@@ -24,7 +24,7 @@ public class Bond : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 distance = playerA.transform.position - playerB.transform.position;
+        distance = playerA.transform.position - playerB.transform.position;
 
         // Condition for when the two units are too far apart
         if (distance.magnitude > maxDist)
