@@ -32,8 +32,7 @@ public class Player2Controller : MonoBehaviour
         {
             trueSpeed = movementSpeed * 0.707106781f;
         }
-
-        if (horizontalInput == 0 | verticalInput == 0)
+        else
         {
             trueSpeed = movementSpeed;
         }
