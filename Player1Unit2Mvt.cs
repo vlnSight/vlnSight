@@ -7,6 +7,7 @@ public class Player1Unit2Mvt : MonoBehaviour
 {
     public GameObject playerA;
     public GameObject playerB;
+    public Vector3 distance;
     private Rigidbody pARB;
     private Rigidbody pBRB;
     public float speed;
@@ -25,26 +26,18 @@ public class Player1Unit2Mvt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 distance = playerA.transform.position - playerB.transform.position;
+        distance = playerA.transform.position - playerB.transform.position;
 
         // Vertical input for the second unit
         secondVerticInput = Input.GetAxis("DistanceP1");
         if (distance.magnitude > maxDist)
         {
             secondVerticInput = 0.0f;
-
-        }
-
-        // When the second unit is too far, the player loses control of it, but it is being slowly pushed back
-        if (distance.magnitude > maxDist)
-        {
-            secondVerticInput = 0.0f;
             pBRB.AddForce(distance.normalized * Time.deltaTime * brokeSpeed);
         }
-        // Applying the secondary input force
-        if (distance.magnitude < maxDist)
+        else
         {
-            pBRB.AddForce(distance.normalized * secondVerticInput * Time.deltaTime * speed, ForceMode.Impulse);
+            pBRB.AddForce(distance.normalized * Time.deltaTime * speed * secondVerticInput, ForceMode.Impulse);
         }
     }
 }
